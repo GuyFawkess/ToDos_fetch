@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import List from "./List";
 
 // IMPORTANTE
 
@@ -26,13 +27,13 @@ const Home = () => {
 		fetch(apiUrlGet)
 			.then(res => res.json())
 			.then(data => {
-				console.log(data)
+				//console.log(data)
 				setTodos(data.todos || []); // aqui tuvimos que poner que devolviera una array vacia o sino me daba error cuando no tenia ningun todo
 			}
 			)
 			.catch(error => console.log("Error fetching: ", error));
 
-	}, [todos]);
+	}, []);
 
 
 
@@ -72,30 +73,31 @@ const Home = () => {
 	return (
 		<div className="container mt-5">
 			<h1 className="text-center">My To Do's</h1>
-			<ul className="m-auto">
-				<li>
-					<input
-						type="text"
-						placeholder="Add To Do"
-						onChange={(e) => setInputValue(e.target.value)}
-						value={inputValue}
-						onKeyPress={handleKeyPress}
-					/>
-				</li>
-				{todos.map((todo) => (
-					<li key={todo.id}>
-						{todo.label}
-						<i
-							className="fas fa-times text-danger todo-icon"
-							onClick={() =>
-								deletePost(todo.id)
-							}
-
-						></i>
-					</li>
-				))}
-				<div>{contador()}</div>
-			</ul>
+			<input
+				className="m-auto mb-3"
+				type="text"
+				placeholder="Add To Do"
+				onChange={(e) => setInputValue(e.target.value)}
+				value={inputValue}
+				onKeyPress={handleKeyPress}
+			/>
+			<List values={todos}>
+				{(todo, i) => {
+					return (
+						<ul key={todo.id} className="m-auto">
+							<li>
+								{todo.label}
+								<i
+									className="fas fa-times text-danger todo-icon"
+									onClick={() =>
+										deletePost(todo.id)}
+								></i>
+							</li>
+						</ul>
+					)
+				}}
+			</List>
+				<div className="m-auto contador mt-2">{contador()}</div>
 		</div>
 	);
 };
@@ -103,3 +105,15 @@ const Home = () => {
 export default Home;
 
 
+// {todos.map((todo) => (
+// 	<li key={todo.id}>
+// 		{todo.label}
+// <i
+// 	className="fas fa-times text-danger todo-icon"
+// 	onClick={() =>
+// 		deletePost(todo.id)
+// 	}
+
+// ></i>
+// 	</li>
+// ))}

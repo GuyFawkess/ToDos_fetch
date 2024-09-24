@@ -25,8 +25,12 @@ ul li {
 }
 
 input {
-    border: none;
-    width: 100%;
+    width: 600px;
+    border: 1px solid gray;
+    list-style: none;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
 }
 
 i {
@@ -39,4 +43,10 @@ i {
   
   .todo-icon:hover {
     transform: scale(1.5) rotate(360deg);
+  }
+
+  .contador {
+    width: 600px;
+    display: flex;
+    justify-content: space-between;
   }
