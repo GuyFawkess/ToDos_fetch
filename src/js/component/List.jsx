@@ -1,9 +1,11 @@
 import React from "react";
 
-const List = ({values, children}) => {
+const List = (props) => {
     return (
       <>
-        {values.map(children)}
+      <ul className="m-auto">
+        {props.values.map(props.children)}
+      </ul>
       </>
             
         )

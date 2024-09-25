@@ -81,11 +81,11 @@ const Home = () => {
 				value={inputValue}
 				onKeyPress={handleKeyPress}
 			/>
-			<List values={todos}>
-				{(todo, i) => {
-					return (
-						<ul key={todo.id} className="m-auto">
-							<li>
+			el values es un nombre del prop que 
+			<List values={todos}>  
+					{(todo) => {
+						return (
+							<li key={todo.id}>
 								{todo.label}
 								<i
 									className="fas fa-times text-danger todo-icon"
@@ -93,11 +93,10 @@ const Home = () => {
 										deletePost(todo.id)}
 								></i>
 							</li>
-						</ul>
-					)
-				}}
+						)
+					}}
 			</List>
-				<div className="m-auto contador mt-2">{contador()}</div>
+			<div className="m-auto contador mt-2">{contador()}</div>
 		</div>
 	);
 };
