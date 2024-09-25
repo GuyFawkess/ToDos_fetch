@@ -81,7 +81,7 @@ const Home = () => {
 				value={inputValue}
 				onKeyPress={handleKeyPress}
 			/>
-			el values es un nombre del prop que 
+			{/* el values es el nombre del prop, puede tener el nombre que quieras */}
 			<List values={todos}>  
 					{(todo) => {
 						return (
