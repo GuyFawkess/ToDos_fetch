@@ -50,8 +50,11 @@ const Home = () => {
 					"Content-type": "application/json"
 				}
 			})
-				.then(() => {
-					setTodos([...todos, newTodo]);
+
+				.then(res => res.json())
+				.then((data) => {
+					console.log(data);
+					setTodos([...todos, data]);
 					setInputValue('');
 				})
 
